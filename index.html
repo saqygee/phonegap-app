@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link href='http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,300' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css" />
+        <title>Hello World</title>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrLT0o__VlMqMh_xDTJ3qLbEYvGtcNS2I&sensor=false">
+        </script>
+
+    </head>
+    <body onload="initialize()">
+        <header>
+            <a href="#" id="logo"></a>
+            <nav>
+                <ul class="floatR">
+                    <li><a href='#' class='active'>MAPS</a></li>
+                    <li><a href="#">EVENTS</a></li>
+                </ul>
+            </nav>
+            <div class="searchwrap" style="height:auto;padding:4px;background-color:#fff">
+            <input id="pac-input" class="search" type="text" placeholder="Search Box" style="poistion:absolute;">
+            <div class="floatR">
+            <a id="searchico" href="#"></a>
+            <a id="geoico" href="#"></a>
+            </div>
+            </div>
+        </header>
+
+        
+        <div id="map"></div>
+
+        <!-- <div class="app">
+         
+ 
+             <img src="img/logo.png" class="logo"/>
+         </div>-->
+
+
+        <script type="text/javascript" src="phonegap.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="jquerymobile/jquery.mobile-1.4.2.min.js"></script>
+        <script type="text/javascript">
+        document.addEventListener("deviceready", onDeviceReady, false);
+        // PhoneGap is ready
+        function onDeviceReady() {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+        }
+        // onSuccess Geolocation
+        function onSuccess(position) {
+
+
+
+            var LX = position.coords.latitude;
+            var LY = position.coords.longitude;
+
+
+
+             var mapOptions = {
+             center: new google.maps.LatLng(LX, LY),
+             zoom: 8
+             };
+             var map = new google.maps.Map(document.getElementById("map"),
+             mapOptions);
+        }
+        
+
+        
+        // onError Callback receives a PositionError object
+        //
+        function onError(error) {
+            alert('code: ' + error.code + '\n' +
+                    'message: ' + error.message + '\n');
+        }
+        </script>
+        <script type="text/javascript">
+            //app initialize
+            app.initialize();
+        </script>
+
+    </body>
+</html>
